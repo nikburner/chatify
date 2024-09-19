@@ -1,0 +1,34 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://Min2who:2skgoPjhHbA8@ep-misty-smoke-a1frgmkz-pooler.ap-southeast-1.aws.neon.tech/chat-app"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String
+  username String
+  messages Message[]
+  groups   Group[]  @relation("UserGroups")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  content   String
+  senderId  Int
+  sender    User     @relation(fields: [senderId], references: [id])
+  groupId   Int?
+  group     Group?   @relation(fields: [groupId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Group {
+  id      Int      @id @default(autoincrement())
+  name    String
+  users   User[]   @relation("UserGroups")
+  messages Message[]
+}
