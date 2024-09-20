@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://Min2who:2skgoPjhHbA8@ep-misty-smoke-a1frgmkz-pooler.ap-southeast-1.aws.neon.tech/chat"
+  url      = "postgresql://neondb_owner:7JK2aebqMXol@ep-still-mode-a5sh6v8b.us-east-2.aws.neon.tech/chatify"
 }
 
 generator client {
