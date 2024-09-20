@@ -26,7 +26,7 @@ export default function SignUp() {
     setMessage('');
     setIsError(false);
     try {
-      const response: any = await register(username, email, password);
+      const response: any = await register( email, password, username);
       setMessage(response.message || 'Registration successful! You can now log in.');
       setIsError(false);
 
@@ -55,20 +55,9 @@ export default function SignUp() {
               <p className={`text-${isError ? 'red' : 'green'}-500`}>{message}</p>
             )}
           <div className="space-y-2">
-            <Label htmlFor="username">Username</Label>
-            <Input
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
-              className="w-full"
-            />
-          </div>
-          <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
@@ -76,13 +65,24 @@ export default function SignUp() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Password</Label>
             <Input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              className="w-full"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="username">UserName</Label>
+            <Input
+              id="username"
+              type="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
               className="w-full"
             />
           </div>
